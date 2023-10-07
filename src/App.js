@@ -1,21 +1,16 @@
 import React from 'react';
-import { DataProvider } from './components/DataContext';
 import TopicInitiation from './components/TopicInitiation';
 import ContributionProposal from './components/ContributionProposal';
 import Login from './components/Login';
 import Register from './components/Register';
 import MainPage from './components/MainPage';
 import PaperDetail from './components/PaperDetail';
-
-
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 // ... import other components
 
 function App() {
     return (
-        <DataProvider>
             <Router>
     <NavBar />
     <Routes>
@@ -30,7 +25,6 @@ function App() {
         {/* ... other routes */}
     </Routes>
 </Router>
-        </DataProvider>
     );
 }
 

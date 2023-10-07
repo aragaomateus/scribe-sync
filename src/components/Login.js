@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
-import { database } from './db'; // Adjust the path based on your directory structure
 import { useNavigate } from 'react-router';
 
 function Login() {
 
-    const users = database.users; // Access the users array from the database object
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        const user = users.find(u => u.email === email);
-
-        if (!user) {
-            alert('Email not found. Please register.');
-            return;
+    const handleLogin = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            });
+            console.log(response.headers)
+    
+            const data = await response.json();
+            console.log(data)
+            if (response.status === 400) {
+                alert(data);
+            } 
+        } catch (error) {
+            console.error("There was an error logging in", error);
         }
-
-        if (user.password !== password) { // In a real-world scenario, compare hashed passwords
-            alert('Incorrect password. Please try again.');
-            return;
-        }
-
         alert('Logged in successfully!');
-        navigate('/feed');
-        // Authenticate the user and redirect to the main feed page
+        navigate('/feed')
     };
+    
 
     return (
         <div>

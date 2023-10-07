@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-import { DataContext } from './DataContext';
+import React, { useState } from 'react';
 import styles from '../styles/TopicInitiation.module.css';
 
 function TopicInitiation() {
@@ -7,21 +6,36 @@ function TopicInitiation() {
     const [overview, setOverview] = useState('');
     const [content, setContent] = useState('');
 
-    const [papers, setPapers] = useContext(DataContext);
-
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const newPaper = {
-            id: Date.now(),
             topic,
             overview,
             content,
             contributions: [],
             discussions: []
         };
-        setPapers([...papers, newPaper]);
-        setTopic('');
-        setOverview('');
-        setContent('');
+
+        try {
+            const response = await fetch('http://localhost:4000/api/papers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newPaper)
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert('Research paper successfully initiated!');
+                setTopic('');
+                setOverview('');
+                setContent('');
+            } else {
+                alert('Error initiating research paper: ' + data.message);
+            }
+        } catch (error) {
+            console.error("Error initiating research paper:", error);
+        }
     };
 
     return (
@@ -44,7 +58,7 @@ function TopicInitiation() {
                 value={content} 
                 onChange={(e) => setContent(e.target.value)} 
             />
-            <button className={styles} onClick={handleSubmit}>Submit</button>
+            <button className={styles.button} onClick={handleSubmit}>Submit</button>
         </div>
     );
 }

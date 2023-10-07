@@ -1,16 +1,26 @@
-import React from 'react';
-import {database} from './db.js';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 function PaperDetail() {
     const { id } = useParams();
-    const paper = database.papers.find(p => p.id === parseInt(id));
-    console.log("ID from URL:", id);
-    console.log("Fetched paper:", paper);
+    const [paper, setPaper] = useState(null);
 
+    useEffect(() => {
+        const fetchPaperDetails = async () => {
+            try {
+                const response = await fetch(`http://localhost:4000/papers/${id}`); // Replace with your backend endpoint
+                const data = await response.json();
+                setPaper(data);
+            } catch (error) {
+                console.error("Error fetching paper details:", error);
+            }
+        };
+
+        fetchPaperDetails();
+    }, [id]);
 
     if (!paper) {
-        return <div>Paper not found.</div>;
+        return <div>Loading paper details...</div>;
     }
 
     return (
