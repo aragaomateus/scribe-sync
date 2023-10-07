@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import '../styles/Register.css'; // Import the CSS file
 
 function Register() {
     const [name, setName] = useState('');
@@ -38,7 +39,7 @@ function Register() {
     
 
     return (
-        <div>
+        <div className="register-container">
             <h2>Register</h2>
             <input 
                 type="text" 
@@ -64,7 +65,6 @@ function Register() {
                 value={topics} 
                 onChange={(e) => setTopics(e.target.value.split(','))} 
             />
-            {/* You can also use multi-select or checkboxes for topics of interest */}
             <button onClick={handleRegister}>Register</button>
             <p>Already have an account? <a href="/login">Login</a></p>
         </div>

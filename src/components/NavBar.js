@@ -1,31 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from '@emotion/styled';
-
-const Nav = styled.nav`
-    background-color: #333;
-    padding: 10px 0;
-`;
-
-const NavLink = styled(Link)`
-    margin: 0 15px;
-    color: white;
-    text-decoration: none;
-
-    &:hover {
-        text-decoration: underline;
-    }
-`;
+import '../styles/NavBar.css';
 
 function NavBar() {
     return (
-        <Nav>
-            <NavLink to="/feed">Feed</NavLink>
-            <NavLink to="/initiate">Initiate Topic</NavLink>
-            <NavLink to="/login">LogIn</NavLink>
-            
+        <div className="nav">
+            <Link className="nav-link" to="/feed">Feed</Link>
+            <Link className="nav-link" to="/initiate">Initiate Topic</Link>
+            <Link className="nav-link" to="/login">LogIn</Link>
             {/* ... other links */}
-        </Nav>
+        </div>
     );
 }
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 
+import '../styles/Login.css';
+
 function Login() {
 
     const [email, setEmail] = useState('');
@@ -26,16 +28,17 @@ function Login() {
             if (response.status === 400) {
                 alert(data);
             } 
+            alert('Logged in successfully!');
+            navigate('/feed')
         } catch (error) {
             console.error("There was an error logging in", error);
         }
-        alert('Logged in successfully!');
-        navigate('/feed')
+        
     };
     
 
     return (
-        <div>
+        <div className="login-container">
             <h2>Login</h2>
             <input 
                 type="email" 

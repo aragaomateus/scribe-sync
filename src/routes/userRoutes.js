@@ -39,8 +39,6 @@ router.post('/login', async (req, res) => {
         if (!user) {
             console.log('Email or password is wrong')
             return res.status(400).send('Email or password is wrong');
-        }else{
-            console.log('found')
         }
 
         // Check if the password is correct
@@ -48,7 +46,6 @@ router.post('/login', async (req, res) => {
         if (!validPassword) {
             return res.status(400).send('Email or password is wrong');
         }else{
-            console.log('valid')
             res.send('Logged in successfully');
         }
 

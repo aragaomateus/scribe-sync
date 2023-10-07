@@ -7,7 +7,7 @@ import MainPage from './components/MainPage';
 import PaperDetail from './components/PaperDetail';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
-// ... import other components
+import './App.css';
 
 function App() {
     return (

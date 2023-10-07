@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import '../styles/PaperDetail.css';
 
 function PaperDetail() {
     const { id } = useParams();
@@ -8,7 +9,7 @@ function PaperDetail() {
     useEffect(() => {
         const fetchPaperDetails = async () => {
             try {
-                const response = await fetch(`http://localhost:4000/papers/${id}`); // Replace with your backend endpoint
+                const response = await fetch(`http://localhost:4000/papers/${id}`);
                 const data = await response.json();
                 setPaper(data);
             } catch (error) {
@@ -24,14 +25,16 @@ function PaperDetail() {
     }
 
     return (
-        <div>
-            <h2>{paper.author}</h2>
-            <img src={paper.imageUrl} alt="Random" />
-            <p>Summary: {paper.summary}</p>
-            <p>Topics: {paper.topics.join(', ')}</p>
-            <p>Contributions: {paper.contributions}</p>
-            {/* Add other features and details here */}
-            <button>Contribute</button>
+        <div className="paper-detail-container">
+            <h2 className="paper-title">{paper.title}</h2>
+            <div className="paper-content">
+                <p>Summary: {paper.summary}</p>
+                <p>Topics: {paper.topics.join(', ')}</p>
+                <p>Contributions: {paper.contributions}</p>
+            </div>
+            <img className="paper-image" src={paper.imageUrl} alt="Paper Visual" />
+            <p className="paper-author">Started by {paper.author}</p>
+            <button className="contribute-button">Contribute</button>
         </div>
     );
 }

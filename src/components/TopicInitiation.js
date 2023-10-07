@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/TopicInitiation.module.css';
+import styles from '../styles/TopicInitiation.css';
 
 function TopicInitiation() {
     const [topic, setTopic] = useState('');
