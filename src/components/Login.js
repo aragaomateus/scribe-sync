@@ -21,20 +21,30 @@ function Login() {
                     password: password
                 })
             });
-            console.log(response.headers)
     
-            const data = await response.json();
-            console.log(data)
-            if (response.status === 400) {
-                alert(data);
-            } 
-            alert('Logged in successfully!');
-            navigate('/feed')
+            // Check if the response has a JSON content type
+            if (response.headers.get("content-type")?.includes("application/json")) {
+                const data = await response.json();
+                console.log(data);
+    
+                if (response.status !== 200) {
+                    alert(data.message); // Use the message property from the JSON response
+                } else {
+                    alert(data.message); // Use the message property from the JSON response
+                    navigate('/feed');
+                }
+            } else {
+                // If not JSON, get the response as text
+                const text = await response.text();
+                console.error("Unexpected server response:", text);
+                alert("An unexpected error occurred. Please try again later.");
+            }
         } catch (error) {
-            console.error("There was an error logging in", error);
+            console.error("There was an error logging in:", error);
+            alert("An error occurred while logging in. Please check the console for details.");
         }
-        
     };
+    
     
 
     return (

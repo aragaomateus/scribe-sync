@@ -38,15 +38,17 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({ email: req.body.email });
         if (!user) {
             console.log('Email or password is wrong')
-            return res.status(400).send('Email or password is wrong');
+          return  res.status(400).send('Email or password is wrong');
         }
 
         // Check if the password is correct
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (!validPassword) {
-            return res.status(400).send('Email or password is wrong');
-        }else{
-            res.send('Logged in successfully');
+            console.log("wrong password");
+            res.status(400).json({ message: 'Email or password is wrong' });
+        } else {            
+            console.log("successful");
+            res.json({ message: 'Logged in successfully' });
         }
 
         // In a real-world scenario, you'd also generate a JWT token here and send it to the client
