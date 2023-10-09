@@ -8,6 +8,8 @@ function MainPage() {
     const [searchTerm, setSearchTerm] = useState('');
     const [papers, setPapers] = useState([]);
 
+    const [selectedTopic, setSelectedTopic] = useState(null); // State to track the selected topic
+
     useEffect(() => {
         const fetchPapers = async () => {
             try {
@@ -22,10 +24,24 @@ function MainPage() {
         fetchPapers();
     }, []);
 
-    const filteredPapers = papers.filter(paper => 
-        paper.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        paper.topics.some(topic => topic.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
+    const uniqueTopics = [...new Set(papers.flatMap(paper => paper.topics))]; // Get unique topics
+
+    let filteredPapers = papers;
+
+    // Filter by search term
+    if (searchTerm) {
+        filteredPapers = filteredPapers.filter(paper => 
+            paper.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            paper.topics.some(topic => topic.toLowerCase().includes(searchTerm.toLowerCase()))
+        );
+    }
+
+    // Filter by selected topic
+    if (selectedTopic) {
+        filteredPapers = filteredPapers.filter(paper => 
+            paper.topics.includes(selectedTopic)
+        );
+    }
 
     const handleContributionProposal = (paperId) => {
         alert(`Contribution Proposal for Paper ID ${paperId}`);
@@ -41,6 +57,17 @@ function MainPage() {
                     value={searchTerm} 
                     onChange={(e) => setSearchTerm(e.target.value)} 
                 />
+                <div className="topicsContainer">
+                    {uniqueTopics.map(topic => (
+                        <button 
+                            key={topic} 
+                            className={`topicTag ${selectedTopic === topic ? 'selected' : ''}`} 
+                            onClick={() => setSelectedTopic(topic === selectedTopic ? null : topic)}
+                        >
+                            {topic}
+                        </button>
+                    ))}
+                </div>
             </div>
             <div className="papersContainer">
                 {filteredPapers.map((paper) => (

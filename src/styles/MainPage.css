@@ -42,3 +42,28 @@ button {
 button:hover {
     background-color: #5a4a2f;
 }
+.topicsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Spacing between tags */
+    margin-top: 20px;
+}
+
+.topicTag {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.topicTag:hover {
+    background-color: #d0d0d0;
+}
+
+.topicTag.selected {
+    background-color: #8a6d3b;
+    color: #fff;
+}

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/PaperDetail.css';
 
 function PaperDetail() {
     const { id } = useParams();
     const [paper, setPaper] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPaperDetails = async () => {
@@ -26,15 +27,24 @@ function PaperDetail() {
 
     return (
         <div className="paper-detail-container">
-            <h2 className="paper-title">{paper.title}</h2>
-            <div className="paper-content">
-                <p>Summary: {paper.summary}</p>
-                <p>Topics: {paper.topics.join(', ')}</p>
-                <p>Contributions: {paper.contributions}</p>
+            <div className="general-info">
+                <img className="paper-image" src={paper.imageUrl} alt="Paper Visual" />
+                <p className="paper-author">Started by {paper.author}</p>
+                <div className="paper-summary">
+                    <p><strong>Summary:</strong> {paper.summary}</p>
+                    <p><strong>Topics:</strong> {paper.topics.join(', ')}</p>
+                    <p><strong>Contributions:</strong> {paper.contributions}</p>
+                </div>
+                <button className="contribute-button">Contribute</button>
+                <button className="back-button" onClick={() => navigate('/feed')}>Back to Feed</button>
             </div>
-            <img className="paper-image" src={paper.imageUrl} alt="Paper Visual" />
-            <p className="paper-author">Started by {paper.author}</p>
-            <button className="contribute-button">Contribute</button>
+
+            <div className="content-section">
+                <h2 className="paper-title">{paper.title}</h2>
+                <div className="paper-content">
+                    <p><strong>Content:</strong> {paper.content}</p>
+                </div>
+            </div>
         </div>
     );
 }
