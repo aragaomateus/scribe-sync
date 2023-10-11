@@ -19,3 +19,42 @@
     background-color: #34495e; /* Slightly darker blue for hover effect */
     text-decoration: none;
 }
+
+/* ... existing styles ... */
+
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: #ecf0f1; /* Light gray color to match the navbar links */
+}
+
+
+.profile-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #2c3e50; /* Dark blue color to match the navbar */
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px; /* To match the navbar's rounded corners */
+}
+
+.profile-dropdown-content a {
+    color: #ecf0f1; /* Light gray color to match the navbar links */
+    padding: 5px 10px; /* Same padding as the navbar links */
+    text-decoration: none;
+    display: block;
+    margin: 0 15px; /* Same as the navbar link margin */
+    border-radius: 5px; /* To match the navbar links */
+    transition: background-color 0.3s ease; /* Same transition as the navbar links */
+}
+
+.profile-dropdown-content a:hover {
+    background-color: #34495e; /* Slightly darker blue for hover effect to match the navbar links */
+    text-decoration: none; /* Same as the navbar link hover effect */
+}
+
+.profile-dropdown:hover .profile-dropdown-content {
+    display: block;
+}

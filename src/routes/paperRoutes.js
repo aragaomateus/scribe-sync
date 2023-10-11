@@ -2,16 +2,30 @@ const express = require('express');
 const router = express.Router();
 const Paper = require('../models/paperModels');
 
+const User = require('../models/userModels');
 
 router.post('/papers', async (req, res) => {
     try {
-        const paper = new Paper(req.body);
+        const user_id = req.body.author_id;
+
+        // Check if the user exists
+        const userExists = await User.findById(user_id);
+        if (!userExists) {
+            return res.status(400).send('User not found');
+        }
+
+        const paper = new Paper({...req.body
+        });
+        console.log("Received paper data:", req.body);
+
         await paper.save();
         res.status(201).send(paper);
     } catch (error) {
+        console.error("Error creating paper:", error);
         res.status(500).send(error.message);
     }
 });
+
 
 router.get('/papers', async (req, res) => {
     try {

@@ -48,7 +48,16 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Email or password is wrong' });
         } else {            
             console.log("successful");
-            res.json({ message: 'Logged in successfully' });
+            // Return user details on successful login
+            res.json({ 
+                message: 'Logged in successfully',
+                user: {
+                    id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    topicsOfInterest: user.topicsOfInterest
+                }
+            });
         }
 
         // In a real-world scenario, you'd also generate a JWT token here and send it to the client

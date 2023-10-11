@@ -48,6 +48,10 @@ button:hover {
     gap: 10px; /* Spacing between tags */
     margin-top: 20px;
 }
+.topicTag {
+    min-width: 70px; /* Adjust as needed */
+}
+
 
 .topicTag {
     background-color: #e0e0e0;

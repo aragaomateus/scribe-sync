@@ -28,10 +28,12 @@ function Login() {
                 console.log(data);
     
                 if (response.status !== 200) {
-                    alert(data.message); // Use the message property from the JSON response
+                    alert(data.message);
                 } else {
-                    alert(data.message); // Use the message property from the JSON response
+                    alert(data.message);
+                    localStorage.setItem('user', JSON.stringify(data.user));
                     navigate('/feed');
+                    window.dispatchEvent(new Event('storage')); // Force a storage event
                 }
             } else {
                 // If not JSON, get the response as text

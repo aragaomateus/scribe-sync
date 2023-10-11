@@ -7,6 +7,7 @@ import MainPage from './components/MainPage';
 import PaperDetail from './components/PaperDetail';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import Profile from './components/Profile'
 import './App.css';
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/feed" element={<MainPage />} />
         <Route path="/feed/paper/:id" element={<PaperDetail />} />
+        <Route path="/profile" element={<Profile />} />
+
 
 
         {/* ... other routes */}

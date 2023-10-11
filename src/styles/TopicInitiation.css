@@ -4,14 +4,19 @@ h2 {
 }
 
 input, textarea {
-    width: 100%;
+    width: 70%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
+    align-items: center;
+    justify-content: center;
 }
 
 button {
+    display: block; /* Add this line */
+    width: 7%; /* Optional: To match the width of input and textarea */
+    margin: 10px auto; /* Center the button and give it top and bottom margin */
     padding: 10px 15px;
     background-color: #007BFF;
     color: #fff;
