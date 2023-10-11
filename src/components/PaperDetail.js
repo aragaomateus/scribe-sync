@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/PaperDetail.css';
+import '../styles/common.css';
 
 function PaperDetail() {
     const { id } = useParams();

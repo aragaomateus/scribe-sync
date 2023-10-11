@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Profile.css';
+import '../styles/common.css';
 
 function Profile() {
     const user = JSON.parse(localStorage.getItem('user')); // Get user details from local storage

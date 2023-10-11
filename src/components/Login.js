@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
+import '../styles/common.css';
 
-import '../styles/Login.css';
+import '../styles/Login&Register.css';
 
 function Login() {
 

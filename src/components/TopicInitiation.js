@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/TopicInitiation.css';
+import '../styles/common.css';
 
 function TopicInitiation() {
     const [title, setTitle] = useState('');
