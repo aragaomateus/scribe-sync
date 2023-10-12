@@ -26,6 +26,10 @@ function PaperDetail() {
         return <div>Loading paper details...</div>;
     }
 
+    const handleContributeClick = () => {
+        navigate(`/contribute/${id}`);
+    };
+
     return (
         <div className="paper-detail-container">
             <div className="general-info">
@@ -36,14 +40,14 @@ function PaperDetail() {
                     <p><strong>Topics:</strong> {paper.topics.join(', ')}</p>
                     <p><strong>Contributions:</strong> {paper.contributions}</p>
                 </div>
-                <button className="contribute-button">Contribute</button>
+                <button className="contribute-button" onClick={handleContributeClick}>Contribute</button>
                 <button className="back-button" onClick={() => navigate('/feed')}>Back to Feed</button>
             </div>
 
             <div className="content-section">
                 <h2 className="paper-title">{paper.title}</h2>
                 <div className="paper-content">
-                    <p><strong>Content:</strong> {paper.content}</p>
+                    <p>{paper.content}</p>
                 </div>
             </div>
         </div>

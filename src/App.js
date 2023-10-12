@@ -1,6 +1,6 @@
 import React from 'react';
 import TopicInitiation from './components/TopicInitiation';
-import ContributionProposal from './components/ContributionProposal';
+import ContributionPage from './components/ContributionPage';
 import Login from './components/Login';
 import Register from './components/Register';
 import MainPage from './components/MainPage';
@@ -16,7 +16,7 @@ function App() {
     <NavBar />
     <Routes>
         <Route path="/initiate" element={<TopicInitiation />} />
-        <Route path="/contribute" element={<ContributionProposal />} />
+        <Route path="/contribute/:id" element={<ContributionPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/feed" element={<MainPage />} />

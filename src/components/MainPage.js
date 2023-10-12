@@ -75,7 +75,7 @@ function MainPage() {
                     <div key={paper.id} className="paper-card">
                         <Link to={`/feed/paper/${paper._id}`}>
                             <img src={paper.imageUrl} alt="Random" />
-                            <h3>Author: {paper.author}</h3>
+                            <h3>Author: {paper.author_name}</h3>
                             <p>Summary: {paper.summary}</p>
                             <p>Topics: {paper.topics.join(', ')}</p>
                             <p>Contributions: {paper.contributions}</p>
