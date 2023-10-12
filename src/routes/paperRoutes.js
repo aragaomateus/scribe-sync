@@ -47,6 +47,15 @@ router.get('/papers/:id', async (req, res) => {
     }
 });
 
+router.get('/papers/createdBy/:userId', async (req, res) => {
+    try {
+        const papers = await Paper.find({ author_id: req.params.userId });
+        res.status(200).json(papers);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 
 router.delete('/papers/:id', async (req, res) => {
     try {

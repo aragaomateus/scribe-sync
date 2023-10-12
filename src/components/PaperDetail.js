@@ -34,7 +34,7 @@ function PaperDetail() {
         <div className="paper-detail-container">
             <div className="general-info">
                 <img className="paper-image" src={paper.imageUrl} alt="Paper Visual" />
-                <p className="paper-author">Started by {paper.author}</p>
+                <p className="paper-author">Started by {paper.author_name}</p>
                 <div className="paper-summary">
                     <p><strong>Summary:</strong> {paper.summary}</p>
                     <p><strong>Topics:</strong> {paper.topics.join(', ')}</p>

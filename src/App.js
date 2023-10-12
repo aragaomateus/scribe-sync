@@ -21,6 +21,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/feed" element={<MainPage />} />
         <Route path="/feed/paper/:id" element={<PaperDetail />} />
+        <Route path="/papers/:id" element={<PaperDetail />} />
+
         <Route path="/profile" element={<Profile />} />
 
 
