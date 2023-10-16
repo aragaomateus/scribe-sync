@@ -44,10 +44,10 @@ function MainPage() {
         );
     }
 
-    const handleContributionProposal = (paperId) => {
-        alert(`Contribution Proposal for Paper ID ${paperId}`);
-        navigate('/contribute');
-    };
+    // const handleContributionProposal = (paperId) => {
+    //     alert(`Contribution Proposal for Paper ID ${paperId}`);
+    //     navigate('/contribute');
+    // };
 
     return (
         <div className="mainPage">
@@ -78,7 +78,7 @@ function MainPage() {
                             <h3>Author: {paper.author_name}</h3>
                             <p>Summary: {paper.summary}</p>
                             <p>Topics: {paper.topics.join(', ')}</p>
-                            <p>Contributions: {paper.contributions}</p>
+                            <p>Contributions: {paper.contributions.length}</p>
                         </Link>
                     </div>
                 ))}

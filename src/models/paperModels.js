@@ -11,7 +11,12 @@ const paperSchema = new mongoose.Schema({
     summary: String,
     topics: [],
     content:String,
-    contributions: [],
+    contributions: [{
+        content: String,
+        contributor: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+        status: { type: String, enum: ['pending', 'approved', 'rejected'] },
+        createdAt: { type: Date, default: Date.now }
+    }],
     imageUrl: String
     
 
